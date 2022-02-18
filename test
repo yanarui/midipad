@@ -1,0 +1,509 @@
+// JavaScript Document
+document.addEventListener('keypress', keypress_q_event);
+document.addEventListener('keypress', keypress_w_ivent);
+document.addEventListener('keypress', keypress_e_ivent);
+document.addEventListener('keypress', keypress_r_ivent);
+document.addEventListener('keypress', keypress_a_ivent);
+document.addEventListener('keypress', keypress_s_ivent);
+document.addEventListener('keypress', keypress_d_ivent);
+document.addEventListener('keypress', keypress_f_ivent);
+document.addEventListener('keypress', keypress_z_ivent);
+document.addEventListener('keypress', keypress_x_ivent);
+document.addEventListener('keypress', keypress_c_ivent);
+document.addEventListener('keypress', keypress_v_ivent);
+document.addEventListener('keypress', keypress_u_ivent);
+document.addEventListener('keypress', keypress_i_ivent);
+document.addEventListener('keypress', keypress_o_ivent);
+document.addEventListener('keypress', keypress_p_ivent);
+document.addEventListener('keyup', keyup_event);
+
+
+var music_1 = new Audio('musics/music_1.mp3');
+var music_2 = new Audio('musics/music_2.mp3');
+var music_3 = new Audio('musics/music_3.mp3');
+var music_4 = new Audio('musics/music_4.mp3');
+var music_5 = new Audio('musics/music_5.mp3');
+var music_6 = new Audio('musics/music_6.mp3');
+var music_7 = new Audio('musics/music_7.mp3');
+var music_8 = new Audio('musics/music_8.mp3');
+var music_9 = new Audio('musics/music_9.mp3');
+var music_10 = new Audio('musics/music_10.mp3');
+var music_11 = new Audio('musics/music_11.mp3');
+var music_12 = new Audio('musics/music_12.mp3');
+var music_13 = new Audio('musics/music_13.mp3');
+var music_14 = new Audio('musics/music_14.mp3');
+
+
+const timer=document.getElementById("timer");
+const start=document.getElementById("start");
+const exit=document.getElementById("exit");
+let Timeout;
+let setTime;
+let startTime;
+let count=0;
+let array=[];
+var j=0;
+
+
+exit.addEventListener('click', () => {
+ let length_2=array.length;
+ for(i=0; i<length_2; i++){
+    array.shift();
+  }
+clearTimeout(setTime);
+timer.textContent ="00:00,000";
+clearTimeout(Timeout);
+});
+
+//スタート処理
+start.addEventListener('click', () => {
+  //セットタイムクリア  
+  clearTimeout(setTime);
+  
+  //roopのセットタイムクリア
+  clearTimeout(Timeout);
+  //タイマーのための変数
+  startTime = Date.now();
+  
+  //タイマー開始
+  countUp();
+  
+  //時間早い順にソート
+  array.sort(function(a,b){return(a[0] - b[0]);});
+  
+  //記録した音楽を再生
+  roop();
+  
+  //配列に押したキーの情報を格納
+  document.addEventListener('keydown', keydown_start);
+  function keydown_start(e) {
+    let d=0;
+    let m=0;
+    let s=0;
+    let ms=0;
+    switch(e.key) {
+     case 'q':
+     case 'Q':
+      d=new Date(Date.now()-startTime);
+      m=String(d.getMinutes()).padStart(2,"0");
+      s=String(d.getSeconds()).padStart(2,"0");
+      ms =String(d.getMilliseconds()).padStart(3,"0");
+      array.push([`${m}${s}${ms}`,'q']);
+      break;
+    case 'w':
+    case 'W':
+       d=new Date(Date.now()-startTime);
+       m=String(d.getMinutes()).padStart(2,"0");
+       s=String(d.getSeconds()).padStart(2,"0");
+       ms =String(d.getMilliseconds()).padStart(3,"0");
+       array.push([`${m}${s}${ms}`,'w']);
+      break;
+    case 'e':
+    case 'E':
+      d=new Date(Date.now()-startTime);
+      m=String(d.getMinutes()).padStart(2,"0");
+      s=String(d.getSeconds()).padStart(2,"0");
+      ms =String(d.getMilliseconds()).padStart(3,"0");
+      array.push([`${m}${s}${ms}`,'e']);
+      break;
+    case 'r':
+    case 'R':
+       d=new Date(Date.now()-startTime);
+       m=String(d.getMinutes()).padStart(2,"0");
+       s=String(d.getSeconds()).padStart(2,"0");
+       ms =String(d.getMilliseconds()).padStart(3,"0");
+       array.push([`${m}${s}${ms}`,'r']);
+      break;
+    case 'a':
+    case 'A':
+      d=new Date(Date.now()-startTime);
+      m=String(d.getMinutes()).padStart(2,"0");
+      s=String(d.getSeconds()).padStart(2,"0");
+      ms =String(d.getMilliseconds()).padStart(3,"0");
+      array.push([`${m}${s}${ms}`,'a']);
+      break;
+    case 's':
+    case 'S':
+       d=new Date(Date.now()-startTime);
+       m=String(d.getMinutes()).padStart(2,"0");
+       s=String(d.getSeconds()).padStart(2,"0");
+       ms =String(d.getMilliseconds()).padStart(3,"0");
+       array.push([`${m}${s}${ms}`,'s']);
+      break;
+    case 'd':
+    case 'D':
+      d=new Date(Date.now()-startTime);
+      m=String(d.getMinutes()).padStart(2,"0");
+      s=String(d.getSeconds()).padStart(2,"0");
+      ms =String(d.getMilliseconds()).padStart(3,"0");
+      array.push([`${m}${s}${ms}`,'d']);
+      break;
+    case 'f':
+    case 'F':
+       d=new Date(Date.now()-startTime);
+       m=String(d.getMinutes()).padStart(2,"0");
+       s=String(d.getSeconds()).padStart(2,"0");
+       ms =String(d.getMilliseconds()).padStart(3,"0");
+       array.push([`${m}${s}${ms}`,'f']);
+      break;
+    case 'z':
+    case 'Z':
+      d=new Date(Date.now()-startTime);
+      m=String(d.getMinutes()).padStart(2,"0");
+      s=String(d.getSeconds()).padStart(2,"0");
+      ms =String(d.getMilliseconds()).padStart(3,"0");
+      array.push([`${m}${s}${ms}`,'z']);
+      break;
+    case 'x':
+    case 'X':
+       d=new Date(Date.now()-startTime);
+       m=String(d.getMinutes()).padStart(2,"0");
+       s=String(d.getSeconds()).padStart(2,"0");
+       ms =String(d.getMilliseconds()).padStart(3,"0");
+       array.push([`${m}${s}${ms}`,'x']);
+      break;
+    case 'c':
+    case 'C':
+      d=new Date(Date.now()-startTime);
+      m=String(d.getMinutes()).padStart(2,"0");
+      s=String(d.getSeconds()).padStart(2,"0");
+      ms =String(d.getMilliseconds()).padStart(3,"0");
+      array.push([`${m}${s}${ms}`,'c']);
+      break;
+    case 'v':
+    case 'V':
+       d=new Date(Date.now()-startTime);
+       m=String(d.getMinutes()).padStart(2,"0");
+       s=String(d.getSeconds()).padStart(2,"0");
+       ms =String(d.getMilliseconds()).padStart(3,"0");
+       array.push([`${m}${s}${ms}`,'v']);
+      break;
+    case 'v':
+    case 'V':
+       d=new Date(Date.now()-startTime);
+       m=String(d.getMinutes()).padStart(2,"0");
+       s=String(d.getSeconds()).padStart(2,"0");
+       ms =String(d.getMilliseconds()).padStart(3,"0");
+       array.push([`${m}${s}${ms}`,'v']);
+      break;
+    case 'u':
+    case 'U':
+       d=new Date(Date.now()-startTime);
+       m=String(d.getMinutes()).padStart(2,"0");
+       s=String(d.getSeconds()).padStart(2,"0");
+       ms =String(d.getMilliseconds()).padStart(3,"0");
+       array.push([`${m}${s}${ms}`,'u']);
+      break;
+    case 'i':
+    case 'I':
+       d=new Date(Date.now()-startTime);
+       m=String(d.getMinutes()).padStart(2,"0");
+       s=String(d.getSeconds()).padStart(2,"0");
+       ms =String(d.getMilliseconds()).padStart(3,"0");
+       array.push([`${m}${s}${ms}`,'i']);
+      break;
+    case 'o':
+    case 'O':
+       d=new Date(Date.now()-startTime);
+       m=String(d.getMinutes()).padStart(2,"0");
+       s=String(d.getSeconds()).padStart(2,"0");
+       ms =String(d.getMilliseconds()).padStart(3,"0");
+       array.push([`${m}${s}${ms}`,'o']);
+      break;
+    case 'p':
+    case 'P':
+       d=new Date(Date.now()-startTime);
+       m=String(d.getMinutes()).padStart(2,"0");
+       s=String(d.getSeconds()).padStart(2,"0");
+       ms =String(d.getMilliseconds()).padStart(3,"0");
+       array.push([`${m}${s}${ms}`,'p']);
+      break;
+    default:
+    break;
+       ;
+    }
+  }
+});
+
+ function countUp() {
+  const d=new Date(Date.now()-startTime);
+  const m=String(d.getMinutes()).padStart(2,"0");
+  const s=String(d.getSeconds()).padStart(2,"0");
+  const ms =String(d.getMilliseconds()).padStart(3,"0");
+  timer.textContent = `${m}:${s},${ms}`;
+ 
+  Timeout=setTimeout(() => {
+    countUp();
+  }, 10);
+}
+
+//音の記録処理
+function roop(){
+  count=0;
+  for(var j=0; j<array.length; j++){
+    setTime=setTimeout(() => {
+      test();
+    },array[j][0]);
+  }
+}
+
+function test(){
+  switch(array[count][1]) {
+   case 'q':
+   case 'Q':
+    music_1.currentTime=0;
+    music_1.play();
+    break;
+   case 'w':
+   case 'W':
+    music_2.currentTime=0;
+    music_2.play();
+    break;
+   case 'e':
+   case 'E':
+    music_3.currentTime=0;
+    music_3.play();
+    break;
+   case 'r':
+   case 'R':
+    music_4.currentTime=0;
+    music_4.play();
+    break;
+   case 'a':
+   case 'A':
+    music_5.currentTime=0;
+    music_5.play();
+    break;
+   case 's':
+   case 'S':
+    music_6.currentTime=0;
+    music_6.play();
+    break;
+   case 'd':
+   case 'D':
+    music_7.currentTime=0;
+    music_7.play();
+    break;
+   case 'f':
+   case 'F':
+    music_8.currentTime=0;
+    music_8.play();
+    break;
+   case 'z':
+   case 'Z':
+    music_9.currentTime=0;
+    music_9.play();
+    break;
+   case 'x':
+   case 'X':
+    music_10.currentTime=0;
+    music_10.play();
+    break;
+   case 'c':
+   case 'C':
+    music_11.currentTime=0;
+    music_11.play();
+    break;
+   case 'v':
+   case 'V':
+    music_12.currentTime=0;
+    music_12.play();
+    break;
+   case 'u':
+   case 'U':
+    music_13.currentTime=0;
+    music_13.play();
+    break;
+   case 'i':
+   case 'I':
+    music_14.currentTime=0;
+    music_14.play();
+    break;
+   case 'o':
+   case 'O':
+    music_15.currentTime=0;
+    music_15.play();
+    break;
+   case 'p':
+   case 'P':
+    music_16.currentTime=0;
+    music_16.play();
+    break;
+  default:
+  ;
+  }
+  count++;
+}
+
+//ボタン処理
+function keypress_q_event(e) {
+	if(e.key === 'q' || e.key === 'Q'){
+		//Aキーが押された時の処理
+    document.getElementById('button-q').style.backgroundColor ="#75d5fd";
+    music_1.load();
+    music_1.play();
+	}
+	return false; 
+}
+
+function keypress_w_ivent(e) {
+	if(e.key === 'w' || e.key === 'W'){
+		//Aキーが押された時の処理
+    document.getElementById('button-w').style.backgroundColor ="#75d5fd";
+    music_2.load();
+    music_2.play();
+	}
+	return false; 
+}
+
+function keypress_e_ivent(e) {
+	if(e.key === 'e' || e.key === 'E'){
+		//Aキーが押された時の処理
+    document.getElementById('button-e').style.backgroundColor ="#75d5fd";
+    music_3.load();
+    music_3.play();
+	}
+	return false; 
+}
+function keypress_r_ivent(e) {
+	if(e.key === 'r' || e.key === 'R'){
+		//Aキーが押された時の処理
+    document.getElementById('button-r').style.backgroundColor ="#75d5fd";
+    music_4.load();
+    music_4.play();
+	}
+	return false; 
+}
+function keypress_a_ivent(e) {
+	if(e.key === 'a' || e.key === 'A'){
+		//Aキーが押された時の処理
+    document.getElementById('button-a').style.backgroundColor ="#75d5fd";
+    music_5.load();
+    music_5.play();
+	}
+	return false; 
+}
+function keypress_s_ivent(e) {
+	if(e.key === 's' || e.key === 'S'){
+		//Aキーが押された時の処理
+    document.getElementById('button-s').style.backgroundColor ="#75d5fd";
+    music_6.load();
+    music_6.play();
+	}
+	return false; 
+}
+function keypress_d_ivent(e) {
+	if(e.key === 'd' || e.key === 'D'){
+		//Aキーが押された時の処理
+    document.getElementById('button-d').style.backgroundColor ="#75d5fd";
+    music_7.load();
+    music_7.play();
+	}
+	return false; 
+}
+function keypress_f_ivent(e) {
+	if(e.key === 'f' || e.key === 'F'){
+		//Aキーが押された時の処理
+    document.getElementById('button-f').style.backgroundColor ="#75d5fd";
+    music_8.load();
+    music_8.play();
+	}
+	return false; 
+}
+
+function keypress_z_ivent(e) {
+	if(e.key === 'z' || e.key === 'Z'){
+		//Aキーが押された時の処理
+    document.getElementById('button-z').style.backgroundColor ="#75d5fd";
+    music_9.load();
+    music_9.play();
+	}
+	return false; 
+}
+
+function keypress_x_ivent(e) {
+	if(e.key === 'x' || e.key === 'X'){
+		//Aキーが押された時の処理
+    document.getElementById('button-x').style.backgroundColor ="#75d5fd";
+    music_10.load();
+    music_10.play();
+	}
+	return false; 
+}
+function keypress_c_ivent(e) {
+	if(e.key === 'c' || e.key === 'C'){
+		//Aキーが押された時の処理
+    document.getElementById('button-c').style.backgroundColor ="#75d5fd";
+    music_11.load();
+    music_11.play();
+	}
+	return false; 
+}
+
+function keypress_v_ivent(e) {
+	if(e.key === 'v' || e.key === 'V'){
+		//Aキーが押された時の処理
+    document.getElementById('button-v').style.backgroundColor ="#75d5fd";
+    music_12.load();
+    music_12.play();
+	}
+	return false; 
+}
+
+function keypress_u_ivent(e) {
+	if(e.key === 'u' || e.key === 'U'){
+		//Aキーが押された時の処理
+    document.getElementById('button-u').style.backgroundColor ="#75d5fd";
+    music_13.load();
+    music_13.play();
+	}
+	return false; 
+}
+function keypress_i_ivent(e) {
+	if(e.key === 'i' || e.key === 'I'){
+		//Aキーが押された時の処理
+    document.getElementById('button-i').style.backgroundColor ="#75d5fd";
+    music_14.load();
+    music_14.play();
+	}
+	return false; 
+}
+function keypress_o_ivent(e) {
+	if(e.key === 'o' || e.key === 'O'){
+		//Aキーが押された時の処理
+    document.getElementById('button-o').style.backgroundColor ="#75d5fd";
+    music_15.load();
+    music_15.play();
+	}
+	return false; 
+}
+function keypress_p_ivent(e) {
+	if(e.key === 'p' || e.key === 'P'){
+		//Aキーが押された時の処理
+    document.getElementById('button-p').style.backgroundColor ="#75d5fd";
+    music_16.load();
+    music_16.play();
+	}
+	return false; 
+}
+function keyup_event(e) {
+	document.getElementById('text').innerHTML = '';
+  document.getElementById('button-q').style.backgroundColor ="#333333";
+  document.getElementById('button-w').style.backgroundColor ="#333333";
+  document.getElementById('button-e').style.backgroundColor ="#333333";
+  document.getElementById('button-r').style.backgroundColor ="#333333";
+  document.getElementById('button-a').style.backgroundColor ="#333333";
+  document.getElementById('button-s').style.backgroundColor ="#333333";
+  document.getElementById('button-d').style.backgroundColor ="#333333";
+  document.getElementById('button-f').style.backgroundColor ="#333333";
+  document.getElementById('button-z').style.backgroundColor ="#333333";
+  document.getElementById('button-x').style.backgroundColor ="#333333";
+  document.getElementById('button-c').style.backgroundColor ="#333333";
+  document.getElementById('button-v').style.backgroundColor ="#333333";
+  document.getElementById('button-u').style.backgroundColor ="#333333";
+  document.getElementById('button-i').style.backgroundColor ="#333333";
+  document.getElementById('button-o').style.backgroundColor ="#333333";
+  document.getElementById('button-p').style.backgroundColor ="#333333";
+	return false; 
+}
+
